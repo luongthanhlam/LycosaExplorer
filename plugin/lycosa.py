@@ -250,7 +250,7 @@ class Entry(object):
         # Determine the longest common prefix for each basename group.
         basename_to_prefix = dict(
             (base, longest_common_prefix([e.full_name for e in entries]))
-            for base, entries in common_base.iteritems())
+            for base, entries in common_base.items())
 
         # Compute shortened buffer names by removing prefix, if possible.
         for entry in buffer_entries:
@@ -667,7 +667,7 @@ class FilesystemExplorer(Explorer):
 
         if len(abbrev) == 0:
             # Sort alphabetically if we have no abbreviation.
-            return sorted(all_files)
+            return sorted(all_files, key=str)
         else:
             matches = []
             for x in all_files:
