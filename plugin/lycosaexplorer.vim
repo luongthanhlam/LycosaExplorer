@@ -7,7 +7,7 @@
 "               lycosa-explorer.vim is provided *as is* and comes with no
 "               warranty of any kind, either expressed or implied. In no
 "               event will the copyright holder be liable for any damages
-"               resulting from the use of this software.
+"               resulting from the use of this software. 
 "
 " Name Of File: lycosaexplorer.vim
 "  Description: Dynamic Filesystem and Buffer Explorer Vim Plugin

@@ -16,7 +16,7 @@ infinity = decimal.Decimal("Infinity")
 
 
 def is_zero(var):
-    assert isinstance(var, basestring), "Unexpected type: %s" % (type(var), )
+    assert isinstance(var, str), "Unexpected type: %s" % (type(var), )
     return var == "0"
 
 
@@ -64,7 +64,7 @@ def pretty_msg(*rest):
     if len(rest) == 0:
         return
     vim.command("redraw")  # see :help echo-redraw
-    for heading, message in itertools.izip_longest(
+    for heading, message in itertools.zip_longest(
         *([iter(rest)] * 2), fillvalue=None):
         vim.command("echohl %s" % (heading, ))
         if message is not None:
