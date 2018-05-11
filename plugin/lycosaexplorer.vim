@@ -147,7 +147,7 @@ if &compatible
 endif
 
 " Check for Python functionality.
-if !has("python") || version < 700
+if !has("python3") || version < 700
   if !exists("g:LycosaExplorerSuppressPythonWarning") ||
       \ g:LycosaExplorerSuppressPythonWarning == "0"
     echohl ErrorMsg
@@ -219,36 +219,36 @@ endif
 
 " Vim-to-python function calls.
 function! s:LycosaFilesystemExplorerStart(path)
-  exec "python lycosa_filesystem_explorer.run_from_path(r'".escape(a:path, "'\\")."')"
+  exec "python3 lycosa_filesystem_explorer.run_from_path(r'".escape(a:path, "'\\")."')"
 endfunction
 
 function! s:LycosaBufferExplorerStart()
-  python lycosa_buffer_explorer.run()
+  python3 lycosa_buffer_explorer.run()
 endfunction
 
 function! s:LycosaFilesystemExplorerCancel()
-  python lycosa_filesystem_explorer.cancel()
+  python3 lycosa_filesystem_explorer.cancel()
 endfunction
 
 function! s:LycosaBufferExplorerCancel()
-  python lycosa_buffer_explorer.cancel()
+  python3 lycosa_buffer_explorer.cancel()
 endfunction
 
 function! s:LycosaFilesystemExplorerKeyPressed(code_arg)
-  python lycosa_filesystem_explorer.key_pressed()
+  python3 lycosa_filesystem_explorer.key_pressed()
 endfunction
 
 function! s:LycosaBufferExplorerKeyPressed(code_arg)
-  python lycosa_buffer_explorer.key_pressed()
+  python3 lycosa_buffer_explorer.key_pressed()
 endfunction
 
 " Setup the autocommands that handle buffer MRU ordering.
 augroup LycosaExplorer
   autocmd!
-  autocmd BufEnter * python lycosa_buffer_stack.push()
-  autocmd BufDelete * python lycosa_buffer_stack.pop()
-  autocmd BufWipeout * python lycosa_buffer_stack.pop()
+  autocmd BufEnter * python3 lycosa_buffer_stack.push()
+  autocmd BufDelete * python3 lycosa_buffer_stack.pop()
+  autocmd BufWipeout * python3 lycosa_buffer_stack.pop()
 augroup End
 
-execute "pyfile ".fnameescape(fnamemodify(expand("<sfile>"), ":h")."/lycosa.py")
+execute "py3file ".fnameescape(fnamemodify(expand("<sfile>"), ":h")."/lycosa.py")
 " vim: set sts=2 sw=2:
